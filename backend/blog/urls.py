@@ -1,5 +1,5 @@
 from rest_framework import routers
-from .api import BlogViewSet
+from .views import BlogViewSet
 
 router = routers.DefaultRouter()
 router.register('api/blog', BlogViewSet, 'blog')
