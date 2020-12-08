@@ -120,9 +120,7 @@ USE_L10N = True
 
 USE_TZ = True
 
-CORS_ORIGIN_WHITELIST = [
-    'http://localhost:3000'
-]
+CORS_ORIGIN_ALLOW_ALL = True
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
