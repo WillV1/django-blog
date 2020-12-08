@@ -1,4 +1,4 @@
-from .models import Blog
+from blog.models import Blog
 from rest_framework import viewsets, permissions
 from .serializers import BlogSerializer
 
