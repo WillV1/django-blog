@@ -39,7 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'blog',
     'corsheaders',
-    'rest_framework'
+    'rest_framework',
+    'cloudinary_storage',
+    'cloudinary'
 ]
 
 MIDDLEWARE = [
@@ -120,6 +122,21 @@ USE_TZ = True
 CORS_ORIGIN_WHITELIST = [
     'http://localhost:3000'
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': 
+    ['rest_framework.permissions.AllowAny'],
+    'DEFAULT_PARSER_CLASSES':['rest_framework.parsers.JSONParser']
+}
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'wvanhook',
+    'API_KEY': '265161516649952',
+    'API_SECRET': '8ziRQtml1LFyWUDrHo_6InnhY04'
+}
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
