@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { DELETE_POST, GET_POSTS } from './types';
+import { DELETE_POST, GET_POSTS, ADD_POST } from './types';
 
 //GET POSTS
 export const getPosts = () => async dispatch => {
@@ -17,6 +17,31 @@ export const getPosts = () => async dispatch => {
   }
 }
 
+//ADD POST
+export const addPost = formData => async dispatch => {
+
+  const { title, text, name, image, date } = formData;
+
+  const data = new FormData();
+  data.append('title', title);
+  data.append('text', text);
+  data.append('name', name);
+  data.append('image')
+
+  try {
+
+    const response = await axios.get('/api/blog/')
+
+    dispatch({
+      type: GET_POSTS,
+      payload: response.data
+    })
+  } catch (err) {
+    console.log(err)
+  }
+}
+
+//DELETE POST
 export const deletePost = id => async dispatch => {
 
   try {
