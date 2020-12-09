@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { addPost } from '../actions/posts';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
@@ -28,6 +31,8 @@ const NewPost = () => {
 
   const onSubmit = async e => {
     e.preventDefault();
+
+    addPost({title, text, name, image, date});
 
     setState({
       title: '',
@@ -71,8 +76,11 @@ const NewPost = () => {
       </Form>
     </Row>
     </Container>
-    
   )
 }
 
-export default NewPost;
+NewPost.propTypes = {
+  addPost: PropTypes.func.isRequired,
+}
+
+export default connect(null, { addPost })(NewPost);

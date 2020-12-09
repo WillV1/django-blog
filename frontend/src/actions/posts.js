@@ -26,14 +26,21 @@ export const addPost = formData => async dispatch => {
   data.append('title', title);
   data.append('text', text);
   data.append('name', name);
-  data.append('image')
+  data.append('image', image);
+  data.append('date', date);
+
+  const config = {
+    headers: { 
+      'Content-Type': 'multipart/form-data'
+    }
+  }
 
   try {
 
-    const response = await axios.get('/api/blog/')
+    const response = await axios.post('/api/blog/', data, config)
 
     dispatch({
-      type: GET_POSTS,
+      type: ADD_POST,
       payload: response.data
     })
   } catch (err) {
