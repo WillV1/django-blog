@@ -8,6 +8,12 @@ django = "*"
 djangorestframework = "*"
 django-cors-headers = "*"
 django-oauth-toolkit = "*"
+cloudinary = "*"
+dj3-cloudinary-storage = "*"
+pillow = "*"
+django-rest-knox = "*"
+psycopg2 = "*"
+psycopg2-binary = "*"
 
 [dev-packages]
 
