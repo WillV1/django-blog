@@ -1,5 +1,6 @@
 import axios from 'axios';
-import { DELETE_POST, GET_POSTS, ADD_POST, GET_ERRORS } from './types';
+import { createMessage } from './messages';
+import { DELETE_POST, GET_POSTS, GET_POST, ADD_POST, GET_ERRORS } from './types';
 
 //GET POSTS
 export const getPosts = () => async dispatch => {
@@ -10,6 +11,22 @@ export const getPosts = () => async dispatch => {
 
     dispatch({
       type: GET_POSTS,
+      payload: response.data
+    })
+  } catch (err) {
+    console.log(err)
+  }
+}
+
+//GET POST BY ID
+export const getPost = id => async dispatch => {
+
+  try {
+
+    const response = await axios.get(`/api/blog/${id}`)
+
+    dispatch({
+      type: GET_POST,
       payload: response.data
     })
   } catch (err) {
@@ -60,7 +77,7 @@ export const deletePost = id => async dispatch => {
   try {
 
     await axios.delete(`/api/blog/${id}/`)
-
+    dispatch(createMessage({postDeleted: 'Post Deleted'}))
     dispatch({
       type: DELETE_POST,
       payload: id

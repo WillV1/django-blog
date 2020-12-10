@@ -16,8 +16,8 @@ export default (
       <Route path='/login' component={Login} />
       <Route path='/addpost' component={NewPost} />
       <Route path="/profile" component={Profile} />
-      <Route path="/post/:id" component={BlogPost} />
       <Route path="/dashboard" component={Dashboard} />
+      <Route path="/post/:id" component={BlogPost} />
     </Switch>
   </Router>
 )

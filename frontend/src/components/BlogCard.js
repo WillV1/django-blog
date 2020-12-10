@@ -1,12 +1,14 @@
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { deletePost } from '../actions/posts';
 import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 
 import Button from 'react-bootstrap/Button';
 
-const BlogCard = ({post: {id, title, text, name}}) => {
+const BlogCard = ({deletePost, post: {id, title, text, name}}) => {
   return (
     <Container>
       <Row>
@@ -17,6 +19,7 @@ const BlogCard = ({post: {id, title, text, name}}) => {
           <Col><Link to={`/post/${id}`}>
           <Button variant="primary">View Post</Button>
           </Link>
+          <Button variant="danger">Delete Post</Button>
         </Col>
       </Row>
     </Container>
@@ -24,7 +27,13 @@ const BlogCard = ({post: {id, title, text, name}}) => {
 }
 
 BlogCard.propTypes = {
-  post: PropTypes.object.isRequired
+  post: PropTypes.object.isRequired,
+  deletePost: PropTypes.func.isRequired,
+  posts: PropTypes.array.isRequired,
 }
 
-export default BlogCard;
+const mapStateToProps = state => ({
+  posts: state.posts.posts
+})
+
+export default connect(mapStateToProps, {deletePost})(BlogCard);

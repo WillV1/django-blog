@@ -1,9 +1,9 @@
-import React, { Fragment, useEffect, useRef } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import { withAlert } from 'react-alert';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-const Alerts = ({error, alert}) => {
+const Alerts = ({error, alert, message}) => {
 
   useEffect(() => {
     const handleProps = () => {
@@ -11,6 +11,9 @@ const Alerts = ({error, alert}) => {
         if (error.msg.title) alert.error('Title is required');
         if (error.msg.text) alert.error('Text is required');
         if (error.msg.name) alert.error('Author is required');
+      }
+      if(message) {
+        if(message.leadDeleted) alert.success(message.leadDeleted);
       }
     }
     handleProps();
@@ -20,11 +23,13 @@ const Alerts = ({error, alert}) => {
 }
 
 Alerts.propTypes = {
-  error: PropTypes.object.isRequired
+  error: PropTypes.object.isRequired,
+  message: PropTypes.object.isRequired
 }
 
 const mapStateToProps = state => ({
-  error: state.errors
+  error: state.errors,
+  message: state.messages
 })
 
 export default connect(mapStateToProps)(withAlert()(Alerts));
