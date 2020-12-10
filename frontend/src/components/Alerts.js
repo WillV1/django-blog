@@ -13,11 +13,11 @@ const Alerts = ({error, alert, message}) => {
         if (error.msg.name) alert.error('Author is required');
       }
       if(message) {
-        if(message.leadDeleted) alert.success(message.leadDeleted);
+        if(message.postDeleted) alert.success(message.postDeleted);
       }
     }
     handleProps();
-  },[error])
+  },[error, message])
 
   return <Fragment />
 }

@@ -19,7 +19,7 @@ const BlogCard = ({deletePost, post: {id, title, text, name}}) => {
           <Col><Link to={`/post/${id}`}>
           <Button variant="primary">View Post</Button>
           </Link>
-          <Button variant="danger">Delete Post</Button>
+          <Button onClick={e => deletePost(id)} variant="danger">Delete Post</Button>
         </Col>
       </Row>
     </Container>
