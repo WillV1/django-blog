@@ -54,7 +54,7 @@ export const addPost = formData => async dispatch => {
   try {
 
     const response = await axios.post('/api/blog/', data, config)
-
+    dispatch(createMessage({postAdded: 'Post Added'}))
     dispatch({
       type: ADD_POST,
       payload: response.data
