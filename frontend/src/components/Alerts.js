@@ -1,12 +1,30 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { Fragment, useEffect, useRef } from 'react';
 import { withAlert } from 'react-alert';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
-const Alerts = () => {
+const Alerts = ({error, alert}) => {
 
   useEffect(() => {
-    alert.show('It Works')
-  },[])
+    const handleProps = () => {
+      if (error) {
+        if (error.msg.title) alert.error('Title is required');
+        if (error.msg.text) alert.error('Text is required');
+        if (error.msg.name) alert.error('Author is required');
+      }
+    }
+    handleProps();
+  },[error])
+
   return <Fragment />
 }
 
-export default withAlert(Alerts);
+Alerts.propTypes = {
+  error: PropTypes.object.isRequired
+}
+
+const mapStateToProps = state => ({
+  error: state.errors
+})
+
+export default connect(mapStateToProps)(withAlert()(Alerts));

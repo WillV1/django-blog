@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { DELETE_POST, GET_POSTS, ADD_POST } from './types';
+import { DELETE_POST, GET_POSTS, ADD_POST, GET_ERRORS } from './types';
 
 //GET POSTS
 export const getPosts = () => async dispatch => {
@@ -20,14 +20,13 @@ export const getPosts = () => async dispatch => {
 //ADD POST
 export const addPost = formData => async dispatch => {
 
-  const { title, text, name, image, date } = formData;
+  const { title, text, name, image } = formData;
 
   const data = new FormData();
   data.append('title', title);
   data.append('text', text);
   data.append('name', name);
   data.append('image', image);
-  data.append('date', date);
 
   const config = {
     headers: { 
@@ -44,7 +43,14 @@ export const addPost = formData => async dispatch => {
       payload: response.data
     })
   } catch (err) {
-    console.log(err)
+    const errors = {
+      msg: err.response.data,
+      status: err.response.data
+    }
+    dispatch({
+      type: GET_ERRORS,
+      payload: errors
+    })
   }
 }
 

@@ -24,6 +24,7 @@ function App() {
       <AlertProvider template={AlertTemplate} {...alertOptions}>
         <div>
         <NavBar />
+        <Alerts />
         {routes}
         </div>
       </AlertProvider>

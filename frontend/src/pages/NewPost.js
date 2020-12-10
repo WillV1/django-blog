@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { addPost } from '../actions/posts';
@@ -8,67 +7,54 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
 
-const NewPost = () => {
+const NewPost = ({addPost}) => {
 
-  const [state, setState] = useState({
-    title: '',
-    text: '',
-    name: '',
-    image: '', 
-    date: ''
-  })
+  const [title, setTitle] = useState('')
+  const [text, setText] = useState('')
+  const [name, setName] = useState('')
+  const [image, setImage] = useState('')
 
-  const  {title, text, name, image, date } = state;
-
-  const history = useHistory()
-
-  const onChange = e => {
-    setState({
-      ...state,
-      [e.target.name]: e.target.value
-    });
-  };
 
   const onSubmit = async e => {
     e.preventDefault();
 
-    addPost({title, text, name, image, date});
+    addPost({title, text, name, image});
 
-    setState({
-      title: '',
-      text: '',
-      name: '',
-      image: '',
-      date: ''
-    });
+    setTitle('')
+    setText('')
+    setName('')
+    setImage('')
 
-    history.goBack();
   };
 
   return (
-    <Container className="container" className="form">
+    <Container className="container form">
     <h2>Add Post</h2>
     <Row> 
       <Form onSubmit={e => onSubmit(e)}>
         <Form.Group controlId="formGroupTitle">
           <Form.Label>Title</Form.Label>
           <Form.Control type="text" placeholder="Enter title" name="title" value={title}
-          onChange={e => onChange(e)}
+          onChange={e => setTitle(e.target.value)}
+          
           />
         </Form.Group>
           <Form.Group controlId="formGroupText">
           <Form.Label>Text</Form.Label>
         <Form.Control as="textarea" placeholder="Text" name="text" value={text}
-        onChange={e => onChange(e)}/>
+        onChange={e => setText(e.target.value)}
+        
+        />
         </Form.Group>
           <Form.Group controlId="formGroupAuthor">
           <Form.Label>Author</Form.Label>
         <Form.Control type="text" placeholder="Enter author" name="name" value={name}
-        onChange={e => onChange(e)}/>
+        onChange={e => setName(e.target.value)}
+        />
         </Form.Group>
         <Form.Group>
-          <Form.File id="exampleFormControlFile1" label="Example file input" value={image}
-          name="image" onChange={e => onChange(e.target.files[0])}/>
+          <Form.File id="exampleFormControlFile1" label="Example file input"
+          onChange={e => setImage(e.target.files[0])}/>
         </Form.Group>
         <Button variant="primary" type="submit">
         Submit
