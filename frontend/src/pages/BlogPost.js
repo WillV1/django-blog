@@ -16,7 +16,7 @@ const BlogPost = ({ getPost, post: {post, loading}, match }) => {
     getPost(match.params.id);
   }, [getPost]);
 
-  return loading ? <Spinner /> : <Fragment>
+  return loading || post === null ? <Spinner /> : <Fragment>
     <Container>
       <Row>
         <Col>
