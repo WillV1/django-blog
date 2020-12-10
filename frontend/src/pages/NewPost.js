@@ -11,18 +11,16 @@ const NewPost = ({addPost}) => {
 
   const [title, setTitle] = useState('')
   const [text, setText] = useState('')
-  const [name, setName] = useState('')
   const [image, setImage] = useState('')
 
 
   const onSubmit = async e => {
     e.preventDefault();
 
-    addPost({title, text, name, image});
+    addPost({title, text, image});
 
     setTitle('')
     setText('')
-    setName('')
     setImage('')
 
   };
@@ -36,20 +34,12 @@ const NewPost = ({addPost}) => {
           <Form.Label>Title</Form.Label>
           <Form.Control type="text" placeholder="Enter title" name="title" value={title}
           onChange={e => setTitle(e.target.value)}
-          
           />
         </Form.Group>
           <Form.Group controlId="formGroupText">
           <Form.Label>Text</Form.Label>
         <Form.Control as="textarea" placeholder="Text" name="text" value={text}
         onChange={e => setText(e.target.value)}
-        
-        />
-        </Form.Group>
-          <Form.Group controlId="formGroupAuthor">
-          <Form.Label>Author</Form.Label>
-        <Form.Control type="text" placeholder="Enter author" name="name" value={name}
-        onChange={e => setName(e.target.value)}
         />
         </Form.Group>
         <Form.Group>

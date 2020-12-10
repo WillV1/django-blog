@@ -22,7 +22,6 @@ const BlogPost = ({ getPost, post: {post, loading}, match }) => {
         <Col>
           <img src={post.image} alt="Blog image" />
           <h3>{post.title}</h3>
-          <h6>Written by: {post.name}</h6>
           <h6>Written on: {post.date}</h6>
           <p>{post.text}</p> 
         </Col>
