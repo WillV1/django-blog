@@ -15,3 +15,13 @@ class Blog(models.Model):
     def __str__(self):
         return self.title
 
+class Profile(models.Model):
+    name = models.CharField(max_length=100)
+    location = models.CharField(max_length=100)
+    join_date = models.DateTimeField(auto_now_add=True)
+    primary_interest = models.CharField(max_length=100)
+    bio = models.TextField()
+    personal_image = models.ImageField(upload_to='images/', blank=True)
+
+    def __str__(self):
+        return self.title

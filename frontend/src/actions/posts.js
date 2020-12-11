@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { createMessage } from './messages';
+import { createMessage, returnErrors } from './messages';
 import { DELETE_POST, GET_POSTS, GET_POST, ADD_POST, GET_ERRORS } from './types';
 
 //GET POSTS
@@ -14,7 +14,7 @@ export const getPosts = () => async dispatch => {
       payload: response.data
     })
   } catch (err) {
-    console.log(err)
+    dispatch(returnErrors(err.response.data, err.response.status));
   }
 }
 
@@ -59,14 +59,7 @@ export const addPost = formData => async dispatch => {
       payload: response.data
     })
   } catch (err) {
-    const errors = {
-      msg: err.response.data,
-      status: err.response.data
-    }
-    dispatch({
-      type: GET_ERRORS,
-      payload: errors
-    })
+    dispatch(returnErrors(err.response.data, err.response.status));
   }
 }
 
