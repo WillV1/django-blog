@@ -4,7 +4,7 @@ import Login from '../pages/Login';
 import NewPost from '../pages/NewPost';
 import Profile from '../pages/Profile';
 import BlogPost from '../pages/BlogPost';
-import Dashboard from '../pages/Dashboard';
+import Articles from '../pages/Articles';
 import AddProfile from '../pages/AddProfile';
 import Home from '../pages/Home';
 
@@ -18,7 +18,7 @@ export default (
       <Route path='/addpost' component={NewPost} />
       <Route path='/addprofile' component={AddProfile} />
       <Route path="/profile" component={Profile} />
-      <Route path="/dashboard" component={Dashboard} />
+      <Route path="/articles" component={Articles} />
       <Route path="/post/:id" component={BlogPost} />
     </Switch>
   </Router>

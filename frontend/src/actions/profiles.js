@@ -1,9 +1,9 @@
 import axios from 'axios';
 import { createMessage, returnErrors } from './messages';
-import { ADD_PROFILE } from './types';
+import { GET_PROFILE } from './types';
 
-//ADD PROFILE
-export const addProfile = formData => async dispatch => {
+//ADD /UPDATE PROFILE
+export const addProfile = (formData, history, edit = false) => async dispatch => {
 
   const { name, location, interest, picture, bio } = formData;
 
@@ -22,12 +22,17 @@ export const addProfile = formData => async dispatch => {
 
   try {
 
-    const response = await axios.post('/api/blog/', data, config)
-    dispatch(createMessage({postAdded: 'Post Added'}))
+    const response = await axios.post('/api/profile/', data, config)
+    dispatch(createMessage({profileUpdated: 'Profile Updated'}))
     dispatch({
-      type: ADD_POST,
+      type: GET_PROFILE,
       payload: response.data
     })
+
+    if(!edit) {
+      history.push('/profile')
+    }
+
   } catch (err) {
     dispatch(returnErrors(err.response.data, err.response.status));
   }

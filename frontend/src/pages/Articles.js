@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import BlogList from '../components/BlogList';
 
-const Dashboard = () => {
+const Articles = () => {
   return (
     <Fragment>
       <BlogList />
@@ -9,4 +9,4 @@ const Dashboard = () => {
   )
 }
 
-export default Dashboard;
+export default Articles;

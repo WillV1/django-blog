@@ -15,6 +15,7 @@ const Alerts = ({error, alert, message}) => {
       if(message) {
         if(message.postDeleted) alert.success(message.postDeleted);
         if(message.postAdded) alert.success(message.postAdded);
+        if(message.profileUpdated) alert.success(message.profileUpdated);
       }
     }
     handleProps();

@@ -30,7 +30,7 @@ export const getPost = id => async dispatch => {
       payload: response.data
     })
   } catch (err) {
-    console.log(err)
+    dispatch(returnErrors(err.response.data, err.response.status));
   }
 }
 
