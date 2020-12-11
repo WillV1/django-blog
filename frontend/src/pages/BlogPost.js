@@ -20,7 +20,7 @@ const BlogPost = ({ getPost, post: {post, loading}, match }) => {
     <Container>
       <Row>
         <Col>
-          <img src={post.image} alt="Blog image" />
+          <img src={post.image} alt={post.title} />
           <h3>{post.title}</h3>
           <h6>Written on: {post.date}</h6>
           <p>{post.text}</p> 
