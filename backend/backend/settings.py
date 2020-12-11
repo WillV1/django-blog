@@ -128,7 +128,7 @@ REST_FRAMEWORK = {
     'DEFAULT PERMISSION_CLASSES': [
         'rest_framework.permissions.AllowAny'
     ],
-    'DEFAULT_AUTHENTICATION_CLASSES': ('knox.auth.TokenAuthentication')
+    'DEFAULT_AUTHENTICATION_CLASSES': ('knox.auth.TokenAuthentication',)
 }
 
 
