@@ -43,7 +43,7 @@ export const addPost = formData => async dispatch => {
   data.append('title', title);
   data.append('text', text);
   data.append('image', image);
-  data.append('image', category);
+  data.append('category', category);
 
   const config = {
     headers: { 

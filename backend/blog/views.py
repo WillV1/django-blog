@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from blog.models import Blog
+from blog.models import Blog, Profile
 from rest_framework import viewsets, permissions
 from rest_framework.response import Response
 from rest_framework.generics import ListAPIView, RetrieveAPIView
