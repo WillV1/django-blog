@@ -12,16 +12,18 @@ const NewPost = ({addPost}) => {
   const [title, setTitle] = useState('')
   const [text, setText] = useState('')
   const [image, setImage] = useState('')
+  const [category, setCategory] = useState('')
 
 
   const onSubmit = async e => {
     e.preventDefault();
 
-    addPost({title, text, image});
+    addPost({title, text, image, category});
 
     setTitle('')
     setText('')
     setImage('')
+    setCategory('')
 
   };
 
@@ -36,11 +38,17 @@ const NewPost = ({addPost}) => {
           onChange={e => setTitle(e.target.value)}
           />
         </Form.Group>
-          <Form.Group controlId="formGroupText">
+        <Form.Group controlId="formGroupText">
           <Form.Label>Text</Form.Label>
         <Form.Control as="textarea" placeholder="Text" name="text" value={text}
         onChange={e => setText(e.target.value)}
         />
+        </Form.Group>
+        <Form.Group controlId="formGroupText">
+          <Form.Label>Category</Form.Label>
+          <Form.Control type="text" placeholder="Add category" name="category" 
+          value={category} onChange={e => setCategory(e.target.value)}
+          />
         </Form.Group>
         <Form.Group>
           <Form.File id="exampleFormControlFile1" label="Example file input"

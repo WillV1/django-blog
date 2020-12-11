@@ -20,6 +20,7 @@ const NavBar = () => {
       </NavDropdown>
       <Nav.Link href="/addpost">Add Post</Nav.Link>
       <Nav.Link href="/profile">Profile</Nav.Link>
+      <Nav.Link href="/addprofile">Add Profile</Nav.Link>
       <Nav.Link href="/dashboard">Home</Nav.Link>
       <Nav.Link href="#link">Log Out</Nav.Link>
       <Nav.Link href="/about">About</Nav.Link>
