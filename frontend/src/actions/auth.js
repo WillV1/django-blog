@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { returnErrors } from './messages';
-import { USER_LOADING, USER_LOADED, AUTH_ERROR } from './types';
+import { USER_LOADING, USER_LOADED, AUTH_ERROR, LOGIN_SUCCESS,
+LOGIN_FAIL} from './types';
 
 //Check token & load user
 export const loadUser = () => async (dispatch, getState) => {
@@ -33,6 +34,33 @@ export const loadUser = () => async (dispatch, getState) => {
     dispatch(returnErrors(err.response.data, err.response.status))
     dispatch({
       type: AUTH_ERROR
+    })
+  }
+}
+
+//Login user
+export const login = (username, password) => async dispatch => {
+
+  //Headers
+  const config = {
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  }
+
+  //Request Body
+  const body = JSON.stringify({username, password});
+
+  try {
+    const response = await axios.post('/api/auth/login', body, config);
+    dispatch({
+      type: LOGIN_SUCCESS,
+      payload: response.data
+    })
+  } catch (err) {
+    dispatch(returnErrors(err.response.data, err.response.status))
+    dispatch({
+      type: LOGIN_FAIL
     })
   }
 }

@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { createMessage, returnErrors } from './messages';
-import { DELETE_POST, GET_POSTS, GET_POST, ADD_POST, GET_ERRORS } from './types';
+import { DELETE_POST, GET_POSTS, GET_POST, ADD_POST } from './types';
 
 //GET POSTS
 export const getPosts = () => async dispatch => {

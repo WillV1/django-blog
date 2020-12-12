@@ -1,6 +1,5 @@
 import { Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
 import Spinner from '../layouts/Spinner';
 
 const PrivateRoute = ({component: Component, auth, ...rest}) =>  (

@@ -7,6 +7,7 @@ import Profile from '../pages/Profile';
 import BlogPost from '../pages/BlogPost';
 import Articles from '../pages/Articles';
 import AddProfile from '../pages/AddProfile';
+import DashBoard from '../pages/DashBoard';
 import About from '../pages/About';
 import Home from '../pages/Home';
 
@@ -22,6 +23,7 @@ export default (
       <PrivateRoute path='/addprofile' component={AddProfile} />
       <PrivateRoute path="/profile" component={Profile} />
       <Route path="/articles" component={Articles} />
+      <PrivateRoute path='/dashboard' component={DashBoard} />
       <Route path="/post/:id" component={BlogPost} />
     </Switch>
   </Router>
