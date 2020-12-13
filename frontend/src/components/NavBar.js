@@ -19,12 +19,14 @@ const NavBar = ({auth: {isAuthenticated, user, loading}, logout}) => {
       <Navbar.Brand href="/">Fit Life</Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
+        <span className='navbar-text mr-3'>
+        <strong>{user ? `Welcome ${user.username}`: ''}</strong></span>
         <Nav className="ml-auto">
           <Nav.Link href="/addpost">Add Post</Nav.Link>
           <Nav.Link href="/profile">Profile</Nav.Link>
           <Nav.Link href="/addprofile">Add Profile</Nav.Link>
           <Nav.Link href="/dashboard">Dashboard</Nav.Link>
-          <Link className="logout" onClick={logout} to="/">Log Out</Link>
+          <Nav.Link className="logout" onClick={logout} to="/">Log Out</Nav.Link>
         </Nav>
       </Navbar.Collapse>
     </Navbar>

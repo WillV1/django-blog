@@ -18,11 +18,11 @@ export default (
       <Route path='/about' component={About} />
       <Route path='/register' component={Signup} />
       <Route path='/login' component={Login} />
-      <PrivateRoute path='/addpost' component={NewPost} />
-      <PrivateRoute path='/addprofile' component={AddProfile} />
-      <PrivateRoute path="/profile" component={Profile} />
+      <Route path='/addpost' component={NewPost} />
+      <Route path='/addprofile' component={AddProfile} />
+      <Route path="/profile" component={Profile} />
       <Route path="/articles" component={Articles} />
-      <PrivateRoute path='/dashboard' component={DashBoard} />
+      <Route path='/dashboard' component={DashBoard} />
       <Route path="/post/:id" component={BlogPost} />
     </Switch>
 )

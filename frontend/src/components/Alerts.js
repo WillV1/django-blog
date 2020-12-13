@@ -11,6 +11,7 @@ const Alerts = ({error, alert, message}) => {
         if (error.msg.title) alert.error('Title is required');
         if (error.msg.text) alert.error('Text is required');
         if (error.msg.name) alert.error('Author is required');
+        if (error.msg.non_field_errors) alert.error(error.msg.non_field_errors);
       }
       if(message) {
         if(message.postDeleted) alert.success(message.postDeleted);
