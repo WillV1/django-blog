@@ -2,6 +2,22 @@ import axios from 'axios';
 import { createMessage, returnErrors } from './messages';
 import { GET_PROFILE } from './types';
 
+//GET PROFILE
+export const getProfile = id => async dispatch => {
+
+  try {
+
+    const response = await axios.get(`/api/profile/${id}`);
+
+    dispatch({
+      type: GET_PROFILE,
+      payload: response.data
+    })
+  } catch (err) {
+    dispatch(returnErrors(err.response.data, err.response.status));
+  }
+}
+
 //ADD /UPDATE PROFILE
 export const addProfile = (formData, history, edit = false) => async dispatch => {
 

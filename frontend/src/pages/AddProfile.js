@@ -44,7 +44,7 @@ const AddProfile = ({addProfile, history}) => {
         <Form.Group controlId="formGroupText">
           <Form.Label>Location</Form.Label>
           <Form.Control type="text" placeholder="Set location" name="location" 
-          value={location} nonChange={e => setLocation(e.target.value)}
+          value={location} onChange={e => setLocation(e.target.value)}
         />
         </Form.Group>
         <Form.Group controlId="formGroupText">

@@ -32,6 +32,7 @@ const DashBoard = ({getProfile, profile: {profile, loading}, auth: {user}}) => {
 
 DashBoard.propTypes = {
   getProfile: PropTypes.func.isRequired,
+  profile: PropTypes.object.isRequired
 }
 
 const mapStateToProps = state => ({
