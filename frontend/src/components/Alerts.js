@@ -12,11 +12,13 @@ const Alerts = ({error, alert, message}) => {
         if (error.msg.text) alert.error('Text is required');
         if (error.msg.name) alert.error('Author is required');
         if (error.msg.non_field_errors) alert.error(error.msg.non_field_errors);
+        if (error.msg.username) alert.error(error.msg.username);
       }
       if(message) {
         if(message.postDeleted) alert.success(message.postDeleted);
         if(message.postAdded) alert.success(message.postAdded);
         if(message.profileUpdated) alert.success(message.profileUpdated);
+        if(message.passwordsNotMatch) alert.error(message.passwordsNotMatch);
       }
     }
     handleProps();

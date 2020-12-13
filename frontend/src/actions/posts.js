@@ -1,13 +1,14 @@
 import axios from 'axios';
 import { createMessage, returnErrors } from './messages';
+import { tokenConfig } from './auth';
 import { DELETE_POST, GET_POSTS, GET_POST, ADD_POST } from './types';
 
 //GET POSTS
-export const getPosts = () => async dispatch => {
+export const getPosts = () => async (dispatch, getState) => {
 
   try {
 
-    const response = await axios.get('/api/blog/')
+    const response = await axios.get('/api/blog/', tokenConfig(getState));
 
     dispatch({
       type: GET_POSTS,
@@ -19,11 +20,11 @@ export const getPosts = () => async dispatch => {
 }
 
 //GET POST BY ID
-export const getPost = id => async dispatch => {
+export const getPost = id => async (dispatch, getState) => {
 
   try {
 
-    const response = await axios.get(`/api/blog/${id}`)
+    const response = await axios.get(`/api/blog/${id}`, tokenConfig(getState));
 
     dispatch({
       type: GET_POST,
@@ -35,7 +36,7 @@ export const getPost = id => async dispatch => {
 }
 
 //ADD POST
-export const addPost = formData => async dispatch => {
+export const addPost = formData => async (dispatch, getState) => {
 
   const { title, text, image, category } = formData;
 
@@ -53,7 +54,7 @@ export const addPost = formData => async dispatch => {
 
   try {
 
-    const response = await axios.post('/api/blog/', data, config)
+    const response = await axios.post('/api/blog/', data, config, tokenConfig(getState))
     dispatch(createMessage({postAdded: 'Post Added'}))
     dispatch({
       type: ADD_POST,
@@ -65,11 +66,11 @@ export const addPost = formData => async dispatch => {
 }
 
 //DELETE POST
-export const deletePost = id => async dispatch => {
+export const deletePost = id => async (dispatch, getState) => {
 
   try {
 
-    await axios.delete(`/api/blog/${id}/`)
+    await axios.delete(`/api/blog/${id}/`, tokenConfig(getState))
     dispatch(createMessage({postDeleted: 'Post Deleted'}))
     dispatch({
       type: DELETE_POST,

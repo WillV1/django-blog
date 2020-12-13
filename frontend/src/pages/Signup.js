@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { register } from '../actions/auth';
+import { createMessage } from '../actions/messages';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
 
-const Signup = () => {
+const Signup = ({createMessage, register, isAuthenticated}) => {
 
   const [state, setState ] = useState({
     username: '',
@@ -26,7 +30,14 @@ const Signup = () => {
   const onSubmit = async e => {
     e.preventDefault();
 
-    console.log('submit');
+    if (password !== password2) {
+      createMessage({passwordsNotMatch: 'Passwords do not match'})
+    } else {
+      const newUser = {
+        username, password, email
+      }
+      register(newUser)
+    }
 
     setState({
       username: '',
@@ -35,6 +46,10 @@ const Signup = () => {
       password2: ''
     });
   };
+
+  if(isAuthenticated){
+    return <Redirect to='/dashboard' />
+  }
 
   return (
     <Container className="container form">
@@ -76,4 +91,13 @@ const Signup = () => {
   )
 }
 
-export default Signup;
+Signup.propTypes = {
+  register: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool
+}
+
+const mapStateToProps = state => ({
+  isAuthenticated: state.auth.isAuthenticated
+})
+
+export default connect(mapStateToProps, { register, createMessage })(Signup);

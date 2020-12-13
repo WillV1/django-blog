@@ -26,7 +26,9 @@ const NavBar = ({auth: {isAuthenticated, user, loading}, logout}) => {
           <Nav.Link href="/profile">Profile</Nav.Link>
           <Nav.Link href="/addprofile">Add Profile</Nav.Link>
           <Nav.Link href="/dashboard">Dashboard</Nav.Link>
-          <Nav.Link className="logout" onClick={logout} to="/">Log Out</Nav.Link>
+          <Link onClick={logout} to="/">
+            <Button className="logout" variant="info">Log Out</Button>
+          </Link>
         </Nav>
       </Navbar.Collapse>
     </Navbar>
@@ -36,16 +38,16 @@ const NavBar = ({auth: {isAuthenticated, user, loading}, logout}) => {
     <Navbar.Brand href="/">Fit Life</Navbar.Brand>
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
     <Navbar.Collapse id="basic-navbar-nav">
-      <Nav className="mr-auto">
+      <Nav className="m-auto">
         <NavDropdown title="Categories" id="basic-nav-dropdown">
           <NavDropdown.Item href="#action/3.1">Fitness</NavDropdown.Item>
           <NavDropdown.Item href="#action/3.2">Nutrition</NavDropdown.Item>
           <NavDropdown.Item href="#action/3.3">Recipes</NavDropdown.Item>
         </NavDropdown>
-        <Nav.Link href="/articles">Home</Nav.Link>
-        <Nav.Link href="/about">About</Nav.Link>
-        <Nav.Link href="/register">Sign Up</Nav.Link>
-        <Nav.Link href="/login">Log In</Nav.Link>
+        <Nav.Link className="px-5" href="/articles">Home</Nav.Link>
+        <Nav.Link className="px-5" href="/about">About</Nav.Link>
+        <Nav.Link className="px-5" href="/register">Sign Up</Nav.Link>
+        <Nav.Link className="px-5" href="/login">Log In</Nav.Link>
         </Nav>
         <Nav className="ml-auto">
           <FontAwesomeIcon icon={faFacebook} /> 
