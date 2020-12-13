@@ -1,6 +1,6 @@
 import NavBar from './components/NavBar';
 import routes from './config/routes';
-
+import { BrowserRouter as Router} from 'react-router-dom';
 import { Provider as AlertProvider } from 'react-alert';
 import AlertTemplate from 'react-alert-template-basic'; 
 import Alerts from './components/Alerts';
@@ -30,9 +30,11 @@ function App() {
     <Provider store={store}>
       <AlertProvider template={AlertTemplate} {...alertOptions}>
         <div>
-        <NavBar />
-        <Alerts />
-        {routes}
+        <Router>
+          <NavBar />
+          <Alerts />
+          {routes}
+        </Router>
         </div>
       </AlertProvider>
       

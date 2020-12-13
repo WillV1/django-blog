@@ -6,3 +6,14 @@
 .form {
   margin: 5%;
 }
+
+.logout {
+  color: #97D5DF;
+  text-decoration: none;
+}
+
+.logout:hover {
+  color: #97D5DF;
+  text-decoration: none;
+}
+

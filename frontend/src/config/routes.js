@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import { Switch, Route} from 'react-router-dom';
 import PrivateRoute from '../common/PrivateRoute';
 import Signup from '../pages/Signup';
 import Login from '../pages/Login';
@@ -13,7 +13,6 @@ import Home from '../pages/Home';
 
 
 export default (
-  <Router>
     <Switch>
       <Route exact path="/" component={Home} />
       <Route path='/about' component={About} />
@@ -26,5 +25,4 @@ export default (
       <PrivateRoute path='/dashboard' component={DashBoard} />
       <Route path="/post/:id" component={BlogPost} />
     </Switch>
-  </Router>
 )

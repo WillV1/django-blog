@@ -1,10 +1,12 @@
 import React, { Fragment } from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { logout } from '../actions/auth';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import Button from 'react-bootstrap/Button';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebook } from "@fortawesome/free-brands-svg-icons";
 import { faTwitter } from "@fortawesome/free-brands-svg-icons";
@@ -21,7 +23,8 @@ const NavBar = ({auth: {isAuthenticated, user, loading}, logout}) => {
           <Nav.Link href="/addpost">Add Post</Nav.Link>
           <Nav.Link href="/profile">Profile</Nav.Link>
           <Nav.Link href="/addprofile">Add Profile</Nav.Link>
-          <Nav.Link onClick={logout} href="/">Log Out</Nav.Link>
+          <Nav.Link href="/dashboard">Dashboard</Nav.Link>
+          <Link className="logout" onClick={logout} to="/">Log Out</Link>
         </Nav>
       </Navbar.Collapse>
     </Navbar>
