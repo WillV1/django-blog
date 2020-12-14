@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from blog.models import Blog, Profile
+from .models import Blog, Profile
 from rest_framework import viewsets, permissions
 from rest_framework.response import Response
 from rest_framework.generics import ListAPIView, RetrieveAPIView
@@ -23,7 +23,7 @@ class ProfileViewSet(viewsets.ModelViewSet):
     serializer_class = ProfileSerializer
 
     def get_queryset(self):
-        return self.request.user.leads.all()
+        return self.request.user.profile.all()
     
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
