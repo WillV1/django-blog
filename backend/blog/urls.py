@@ -1,8 +1,7 @@
 from rest_framework import routers
-from .views import BlogViewSet, ProfileViewSet
+from .views import BlogViewSet
 
 router = routers.DefaultRouter()
 router.register('api/blog', BlogViewSet, 'blog')
-router.register('api/profile', ProfileViewSet, 'profile')
 
 urlpatterns = router.urls
